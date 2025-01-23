@@ -1,0 +1,36 @@
+﻿@model PagingViewModel<HeroViewModel>
+
+<div class="mb-4">
+    <a asp-action="Create" class="btn btn-primary">Create Hero</a>
+</div>
+
+<div>
+    <ul class="list-group">
+        @foreach (var hero in Model.Items)
+        {
+            <li class="list-group-item">
+                <p><strong>Superhero Name:</strong> @hero.SuperheroName</p>
+                <p><strong>Full Name:</strong> @hero.FullName</p>
+                <p><strong>Height (cm):</strong> @hero.HeightCm</p>
+                <p><strong>Weight (kg):</strong> @hero.WeightKg</p>
+                <a asp-action="Superpowers" asp-route-id="@hero.Id" class="btn btn-link">View Superpowers</a>
+            </li>
+        }
+    </ul>
+</div>
+
+<div>
+    Page @Model.CurrentPage of @Model.TotalPages
+</div>
+
+<div>
+    @if (Model.CurrentPage > 1)
+    {
+    <a asp-action="Index" asp-route-page="@(Model.CurrentPage - 1)">Previous</a>
+    }
+
+    @if (Model.CurrentPage < Model.TotalPages)
+    {
+    <a asp-action="Index" asp-route-page="@(Model.CurrentPage + 1)">Next</a>
+    }
+</div>

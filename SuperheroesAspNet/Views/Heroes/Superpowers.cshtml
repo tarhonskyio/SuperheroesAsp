@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SuperpowerViewModel>
+
+<h1>Superheroes</h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Superpower</th>
+        <th>Number of Superheroes</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var power in Model)
+    {
+    <tr>
+        <td>@power.PowerName</td>
+        <td>@power.HeroCount</td>
+    </tr>
+    }
+    </tbody>
+</table>
+
